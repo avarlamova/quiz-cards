@@ -6,9 +6,9 @@ const App = () => {
 
     const Data = 
         [
-            { notation: 'rankle', id:1, english: true },
-            { notation: 'husbandry', id:2, english: true },
-            { notation: 'das Haus', id:3, german: true }
+            { notation: 'rankle', id:1, de: false },
+            { notation: 'husbandry', id:2, de: false },
+            { notation: 'das Haus', id:3, de: true }
           ];
     return (
     <div>

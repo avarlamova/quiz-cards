@@ -3,5 +3,12 @@
 }
 
 .flipped-card {
-color: blue;
+font-weight: bold;
+}
+.english {
+    color: violet;
+}
+
+.german {
+    color: olive;
 }
