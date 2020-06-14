@@ -1,9 +1,15 @@
 .word-card {
     color: green;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 200px;
+    height: 60px;
+    border: solid black 2px;
 }
 
 .flipped-card {
 font-weight: bold;
+background-color: orange;
 }
 .english {
     color: violet;
@@ -11,4 +17,11 @@ font-weight: bold;
 
 .german {
     color: olive;
+}
+
+.lng-change {
+    
+}
+.delete-card {
+    
 }

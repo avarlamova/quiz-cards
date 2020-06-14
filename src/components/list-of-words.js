@@ -2,7 +2,7 @@ import React from 'react';
 import Word from './word';
 import './list-of-words.css';
 
-const List = ( {words} ) => {
+const List = ( {words, onDelete} ) => {
     
     const items = words.map((item) => {
         const {id} =  item;
@@ -10,7 +10,7 @@ const List = ( {words} ) => {
           <li key = {id}>
             <Word 
             notation = {item.notation} 
-            onDelete = {() => console.log(id)}
+            onDelete = {() => onDelete(id)}
             />
           </li>
         );

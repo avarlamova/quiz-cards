@@ -44,14 +44,16 @@ render () {
     }
 
     return ( 
-        <div> 
-        <span className={classNames}
+        <div className={classNames}
         onClick={this.onClick} 
         >{ notation } 
-        </span>
-         <button onClick = {this.onLangChange}> Change language </button>
-         <button onClick = {onDelete}> Delete card </button>
+        <div> 
+         <button className = "lng-change" onClick = {this.onLangChange} /> Change language 
         </div>
+        <div> 
+         <button className = "delete-card" onClick = {onDelete} /> Delete card 
+         </div>
+         </div>
     )
     }
 
