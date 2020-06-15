@@ -6,13 +6,22 @@ import NewWord from './add-word-form';
 class App extends Component {
     state = {
             Data: [
-            { notation: 'rankle', id:1, de: false, translation: 'терзать' },
-            { notation: 'husbandry', id:2, de: false, translation: 'сельское хозяйство' },
-            { notation: 'das Haus', id:3, de: true, translation: 'дом' }
+            this.createNewWord ('rankle', 'терзать'),
+            this.createNewWord('husbandry', 'сельское хозяйство'),
+            this.createNewWord('das Haus', 'дом'),          
           ]
         };
 
-    startId = 4;
+    startId = 100;
+
+    createNewWord(notation, translation) {
+      return {
+        notation,
+        id: Math.floor(Math.random() * 101),
+        de: false,
+        translation,
+      }
+    };
 
     deleteWord = (id) => {
         this.setState(({ Data }) => {
@@ -24,30 +33,24 @@ class App extends Component {
         });
       };
 
-      addWord = (text) => {
-        const newWord = {
-          notation: text,
-          //id: Math.floor(Math.random() * 101),
-          de: true,
-          id: this.startId++,
-        }
+      addWord = (text, translation) => {
+        const newWord = this.createNewWord(text, translation)
         this.setState(({ Data }) => {
           const newArray = [...Data,newWord];
-          
           return {
             Data: newArray
           };
         })
       };
-
+    
 render () {
     return (
         <div>
             <Header />
+            <NewWord addWord = {this.addWord}/>
             <List words = {this.state.Data}
             onDelete = {this.deleteWord}
             />
-            <NewWord addWord = {this.addWord}/>
         </div>
         );
 }

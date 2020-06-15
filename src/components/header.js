@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => { 
-    return <h1>List of words</h1>
+    return <h2> Quiz cards</h2>
 };
 
 export default Header

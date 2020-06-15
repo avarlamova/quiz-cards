@@ -11,7 +11,7 @@ class Word extends Component {
             de: false,
         };
 
-        this.onClick = () => {
+        this.flip = () => {
             this.setState(({isFlipped}) => {
               return {
                 isFlipped: !isFlipped
@@ -30,7 +30,7 @@ class Word extends Component {
 
 render () {
     
-    const { notation, onDelete } = this.props;
+    const { notation, onDelete, translation } = this.props;
     const { isFlipped, de } = this.state;
     let classNames = "word-card";
     if (isFlipped) {
@@ -44,14 +44,18 @@ render () {
     }
 
     return ( 
+      <div> 
         <div className={classNames}
-        onClick={this.onClick} 
-        >{ notation } 
-        <div> 
-         <button className = "lng-change" onClick = {this.onLangChange} /> Change language 
+        onClick={ this.flip } 
+        >{ isFlipped ? translation : notation } 
         </div>
         <div> 
-         <button className = "delete-card" onClick = {onDelete} /> Delete card 
+         <button className = "change-lang" 
+         onClick = {this.onLangChange} 
+         value = "Change language"/> 
+        </div>
+        <div> 
+         <button className = "btn" onClick = {onDelete} /> Delete card 
          </div>
          </div>
     )

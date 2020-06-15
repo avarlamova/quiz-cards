@@ -7,18 +7,19 @@ const List = ( {words, onDelete} ) => {
     const items = words.map((item) => {
         const {id} =  item;
         return (
-          <li key = {id}>
+          <div key = {id}>
             <Word 
             notation = {item.notation} 
+            translation = {item.translation}
             onDelete = {() => onDelete(id)}
             />
-          </li>
+          </div>
         );
       });
       return (
-        <ul className="list-group-item words-list">
+        <div className="list-group-item words-list">
           { items }
-        </ul>
+        </div>
       );
 };
 

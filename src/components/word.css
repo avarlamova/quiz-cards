@@ -1,27 +1,36 @@
 .word-card {
-    color: green;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
+    background-color: lightskyblue;
     margin-left: 10px;
     margin-right: 10px;
-    width: 200px;
-    height: 60px;
+    width: 400px;
+    height: 100px;
     border: solid black 2px;
+    text-align: center;
+}
+
+.word-card:hover {
+    font-weight: bold;
+    background-color: skyblue;
 }
 
 .flipped-card {
-font-weight: bold;
-background-color: orange;
-}
-.english {
-    color: violet;
+    background-color: lightblue;
 }
 
 .german {
-    color: olive;
+    font-style: italic;
 }
 
-.lng-change {
-    
+.english {
+    color: blueviolet
 }
-.delete-card {
-    
+
+.change-lang {
+    background-color: teal;
+    width: 100px;
+    height: 30px;
+    color: #ffffff;
+
 }
