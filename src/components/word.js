@@ -50,12 +50,16 @@ render () {
         >{ isFlipped ? translation : notation } 
         </div>
         <div> 
-         <button className = "change-lang" 
-         onClick = {this.onLangChange} 
-         value = "Change language"/> 
+         <button type = "button"
+         className = "btn btn-primary"
+         onClick = {this.onLangChange}> Change language </button>
         </div>
         <div> 
-         <button className = "btn" onClick = {onDelete} /> Delete card 
+         <button 
+         type = "button"
+         className = "btn btn-primary" 
+         onClick = {onDelete} 
+         > Delete card </button> 
          </div>
          </div>
     )

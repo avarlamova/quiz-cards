@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import List from './list-of-words';
 import Header from './header';
 import NewWord from './add-word-form';
+import SearchBar from './search-bar'
 
 class App extends Component {
     state = {
@@ -9,10 +10,8 @@ class App extends Component {
             this.createNewWord ('rankle', 'терзать'),
             this.createNewWord('husbandry', 'сельское хозяйство'),
             this.createNewWord('das Haus', 'дом'),          
-          ]
+          ],
         };
-
-    startId = 100;
 
     createNewWord(notation, translation) {
       return {
@@ -33,8 +32,8 @@ class App extends Component {
         });
       };
 
-      addWord = (text, translation) => {
-        const newWord = this.createNewWord(text, translation)
+      addWord = (text,translation) => {
+        const newWord = this.createNewWord(text,translation)
         this.setState(({ Data }) => {
           const newArray = [...Data,newWord];
           return {
@@ -42,15 +41,19 @@ class App extends Component {
           };
         })
       };
-    
+
+
+     
 render () {
     return (
-        <div>
+      <div>
             <Header />
             <NewWord addWord = {this.addWord}/>
             <List words = {this.state.Data}
             onDelete = {this.deleteWord}
+            onChange = {this.searchChanged}
             />
+            <SearchBar/> 
         </div>
         );
 }

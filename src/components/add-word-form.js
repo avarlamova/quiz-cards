@@ -12,9 +12,9 @@ class NewWord extends Component  {
         })
     };
     
-    onTranslationChange = (event) => {
+    onTranslationChange = (e) => {
         this.setState ({
-            translation: event.target.value,
+            translation: e.target.value,
         })
     };
 
@@ -33,7 +33,8 @@ class NewWord extends Component  {
     render() {
         return(
             <div> 
-            <form className="item-add-form d-flex" onSubmit={this.onNotationSubmit}> 
+            <form className="item-add-form d-flex" 
+            onSubmit={this.onNotationSubmit}> 
             <input 
             type="text" 
             className = "form-control" 
