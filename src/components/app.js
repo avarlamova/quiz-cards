@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import List from './list-of-words';
 import Header from './header';
-import NewWord from './add-word-form';
-import SearchBar from './search-bar'
+import NewWord from './add-word';
+import SearchBar from './search-bar';
+
 
 class App extends Component {
     state = {
@@ -32,16 +33,18 @@ class App extends Component {
         });
       };
 
-      addWord = (text,translation) => {
-        const newWord = this.createNewWord(text,translation)
+      addWord = (notation, translation) => {
+        const newWord = this.createNewWord(notation, translation);
         this.setState(({ Data }) => {
-          const newArray = [...Data,newWord];
+          const newArray = [...Data,
+            newWord,
+          ];
+          console.log(newWord)
           return {
             Data: newArray
           };
         })
       };
-
 
      
 render () {

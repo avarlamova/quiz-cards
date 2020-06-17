@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './add-word-form.css';
+import './add-word.css';
 
 class NewWord extends Component  { 
     state = {
@@ -11,30 +11,24 @@ class NewWord extends Component  {
             notation: event.target.value,
         })
     };
-    
-    onTranslationChange = (e) => {
+
+    onTranslationChange = (event) => {
         this.setState ({
-            translation: e.target.value,
+            translation: event.target.value,
         })
     };
 
-    onNotationSubmit = (event) => {
+    onSubmit = (event) => {
         event.preventDefault();
-        this.props.addWord(this.state.notation);
-        this.setState( {notation: ''})
-    }
-
-    onTranslationSubmit = (event) => {
-        event.preventDefault();
-        this.props.addWord(this.state.translation);
-        this.setState( {translation: ''})
+        this.props.addWord(this.state.notation, this.state.translation);
+        this.setState( {notation: '', translation: '' })
     }
 
     render() {
         return(
             <div> 
             <form className="item-add-form d-flex" 
-            onSubmit={this.onNotationSubmit}> 
+            onSubmit={this.onSubmit}> 
             <input 
             type="text" 
             className = "form-control" 
@@ -43,19 +37,14 @@ class NewWord extends Component  {
             value = {this.state.notation}/> 
             <button className = "btn-add"
             onClick = { () => this.props.addWord}
-            >Add item</button>
+            >Add word</button>
             </form>
-            
-            <form 
-            className="item-add-form d-flex"
-            onSubmit = {this.onTranslationSubmit}> 
             <input 
             type="text" 
             className = "form-control" 
             onChange = {this.onTranslationChange}
             placeholder = "type translation" 
             value = {this.state.translation}/> 
-            </form>
             </div>
         )
     }
