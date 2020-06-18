@@ -51,13 +51,13 @@ render () {
         </div>
         <div> 
          <button type = "button"
-         className = "btn btn-primary"
+         className = "btn btn-primary change-lng"
          onClick = {this.onLangChange}> Change language </button>
         </div>
         <div> 
          <button 
          type = "button"
-         className = "btn btn-primary" 
+         className = "btn btn-primary delete-card" 
          onClick = {onDelete} 
          > Delete card </button> 
          </div>

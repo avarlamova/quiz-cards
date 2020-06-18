@@ -31,20 +31,22 @@ class NewWord extends Component  {
             onSubmit={this.onSubmit}> 
             <input 
             type="text" 
-            className = "form-control" 
+            className = "word-add" 
             onChange = {this.onNotationChange}
             placeholder = "type word" 
             value = {this.state.notation}/> 
-            <button className = "btn-add"
+            <button className = "button-add"
             onClick = { () => this.props.addWord}
             >Add word</button>
             </form>
+            <form className = "item-add-form d-flex"> 
             <input 
             type="text" 
-            className = "form-control" 
+            className = 'translation-add'
             onChange = {this.onTranslationChange}
             placeholder = "type translation" 
             value = {this.state.translation}/> 
+            </form>
             </div>
         )
     }

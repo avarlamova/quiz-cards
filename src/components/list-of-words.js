@@ -17,7 +17,7 @@ const List = ( {words, onDelete} ) => {
         );
       });
       return (
-        <div className="list-group-item words-list">
+        <div className="list-group-item">
           { items }
         </div>
       );

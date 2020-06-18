@@ -4,7 +4,6 @@ import Header from './header';
 import NewWord from './add-word';
 import SearchBar from './search-bar';
 
-
 class App extends Component {
     state = {
             Data: [
@@ -45,7 +44,6 @@ class App extends Component {
           };
         })
       };
-
      
 render () {
     return (

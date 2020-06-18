@@ -5,3 +5,15 @@
 .item-add-form input{ 
     margin-top: 6px;
 }
+
+.word-add {
+    width: 200px;
+}
+.translation-add {
+    width: 200px;
+}
+
+.button-add {
+    position: relative;
+    margin: 12px;
+}
