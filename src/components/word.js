@@ -32,7 +32,7 @@ render () {
     
     const { notation, onDelete, translation } = this.props;
     const { isFlipped, de } = this.state;
-    let classNames = "word-card";
+    let classNames = "col-4 word-card";
     if (isFlipped) {
         classNames+=' flipped-card';
     }
@@ -44,24 +44,32 @@ render () {
     }
 
     return ( 
-      <div> 
-        <div className={classNames}
+      <div className = "container">
+       <div className = "row"> 
+       <div className= {classNames}
         onClick={ this.flip } 
         >{ isFlipped ? translation : notation } 
         </div>
-        <div> 
-         <button type = "button"
-         className = "btn btn-primary change-lng"
-         onClick = {this.onLangChange}> Change language </button>
         </div>
-        <div> 
-         <button 
-         type = "button"
-         className = "btn btn-primary delete-card" 
-         onClick = {onDelete} 
-         > Delete card </button> 
+        <div className = "container"> 
+        <div className = "row justify-content-start">
+        <div className = "col-2">
+          <button type = "button"
+          className = "btn btn-primary change-lng"
+          onClick = {this.onLangChange}> Change language </button>
          </div>
-         </div>
+         <div className = "col-2"> 
+          <button 
+          type = "button"
+          className = "btn btn-primary delete-card" 
+          onClick = {onDelete} 
+          > Delete card </button> 
+        </div>
+        </div>
+        </div>
+        </div>
+
+
     )
     }
 

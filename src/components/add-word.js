@@ -5,6 +5,7 @@ class NewWord extends Component  {
     state = {
         notation: '',
         translation: '',
+        de: false, 
     }
     onNotationChange = (event) => {
         this.setState ({
@@ -24,9 +25,26 @@ class NewWord extends Component  {
         this.setState( {notation: '', translation: '' })
     }
 
+    setGerman = () => {
+        this.setState(({de}) => {
+          return {
+            de: true,
+          };
+        });
+      };
+
+    setEnglish = () => {
+        this.setState(({de}) => {
+          return {
+            de: false,
+          };
+        });
+      };
+
     render() {
+
         return(
-            <div> 
+            <div className="container"> 
             <form className="item-add-form d-flex" 
             onSubmit={this.onSubmit}> 
             <input 
@@ -39,10 +57,17 @@ class NewWord extends Component  {
             onClick = { () => this.props.addWord}
             >Add word</button>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" />
-            <input type="radio" name="german" id="option1" autocomplete="off" checked value /> German  
-            <label class="btn btn-primary" />
-            <input type="radio" name="english" id="option2" autocomplete="off" /> English
+            <label class="btn btn-primary active"> German </label>
+            <input 
+            type="radio" 
+            autocomplete="off" 
+            checked value
+            onClick =  { this.setGerman }/>    
+            <label class="btn btn-primary"> English </label>
+            <input 
+            type="radio" 
+            autocomplete="off"
+            onClick = { this.setEnglish }/> 
             </div>
             </form>
             <form className = "item-add-form d-flex"> 
