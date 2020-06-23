@@ -52,7 +52,7 @@ render () {
         </div>
         </div>
         <div className = "container"> 
-        <div className = "row justify-content-start">
+        <div className = "row justify-content-сenter">
         <div className = "col-2">
           <button type = "button"
           className = "btn btn-primary change-lng"

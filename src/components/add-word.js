@@ -56,19 +56,14 @@ class NewWord extends Component  {
             <button className = "button-add"
             onClick = { () => this.props.addWord}
             >Add word</button>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active"> German </label>
-            <input 
-            type="radio" 
-            autocomplete="off" 
-            checked value
-            onClick =  { this.setGerman }/>    
-            <label class="btn btn-primary"> English </label>
-            <input 
-            type="radio" 
-            autocomplete="off"
-            onClick = { this.setEnglish }/> 
+            <div className="btn-group">
+            
+            <button type="button"
+                className="btn btn-outline-secondary active">German</button>
+            <button type="button"
+                className="btn btn-outline-secondary">English</button>
             </div>
+
             </form>
             <form className = "item-add-form d-flex"> 
             <input 
