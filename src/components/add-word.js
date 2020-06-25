@@ -53,18 +53,28 @@ class NewWord extends Component  {
             onChange = {this.onNotationChange}
             placeholder = "type word" 
             value = {this.state.notation}/> 
+
             <button className = "button-add"
             onClick = { () => this.props.addWord}
             >Add word</button>
-            <div className="btn-group">
-            
-            <button type="button"
-                className="btn btn-outline-secondary active">German</button>
-            <button type="button"
-                className="btn btn-outline-secondary">English</button>
-            </div>
-
             </form>
+
+            <div className="btn-group btn-group-toggle" data-toggle="buttons">
+            <label className="btn btn-primary active">
+              <input 
+              type="radio" 
+              name="1" id="de" 
+              autoComplete="off" 
+              defaultChecked 
+              onInput = {this.setGerman}
+              /> German
+            </label>
+             
+            <label className="btn btn-primary">
+              <input type="radio" name="1" id="en" autoComplete="off" /> English
+            </label>
+              </div>
+
             <form className = "item-add-form d-flex"> 
             <input 
             type="text" 
@@ -75,6 +85,6 @@ class NewWord extends Component  {
             </form>
             </div>
         )
-    }
-}
+          }
+        }
 export default NewWord

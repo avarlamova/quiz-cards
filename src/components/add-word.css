@@ -8,12 +8,11 @@
 
 .word-add {
     width: 200px;
+    height: 70px;
+    margin: 5px;
 }
 .translation-add {
     width: 200px;
-}
-
-.button-add {
-    position: relative;
-    margin: 12px;
+    height: 70px;
+    margin: 5px;
 }

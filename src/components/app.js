@@ -3,6 +3,7 @@ import List from './list-of-words';
 import Header from './header';
 import NewWord from './add-word';
 import SearchBar from './search-bar';
+import WordsFilter from './words-filter';
 
 class App extends Component {
     state = {
@@ -11,6 +12,7 @@ class App extends Component {
             this.createNewWord('husbandry', 'сельское хозяйство'),
             this.createNewWord('das Haus', 'дом'),          
           ],
+          filter: 'all',
         };
 
     createNewWord(notation, translation) {
@@ -38,7 +40,6 @@ class App extends Component {
           const newArray = [...Data,
             newWord,
           ];
-          console.log(newWord)
           return {
             Data: newArray
           };
@@ -49,6 +50,7 @@ render () {
     return (
       <div>
             <Header />
+            <WordsFilter filter = {filter}/>
             <NewWord addWord = {this.addWord}/>
             <List words = {this.state.Data}
             onDelete = {this.deleteWord}

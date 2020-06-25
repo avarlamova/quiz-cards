@@ -7,7 +7,7 @@ const List = ( {words, onDelete} ) => {
     const items = words.map((item) => {
         const {id} =  item;
         return (
-          <div key = {id} className="container">
+          <div key = {id} >
             <Word 
             notation = {item.notation} 
             translation = {item.translation}

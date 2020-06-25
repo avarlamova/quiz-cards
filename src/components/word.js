@@ -32,7 +32,7 @@ render () {
     
     const { notation, onDelete, translation } = this.props;
     const { isFlipped, de } = this.state;
-    let classNames = "col-4 word-card";
+    let classNames = "word-card";
     if (isFlipped) {
         classNames+=' flipped-card';
     }
@@ -68,8 +68,6 @@ render () {
         </div>
         </div>
         </div>
-
-
     )
     }
 
