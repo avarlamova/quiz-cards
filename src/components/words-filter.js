@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 
 class WordsFilter extends Component {
     filterbtn = [
-        {name: 'all', label: 'all'},
+        {name: 'All', label: 'All'},
         {name: 'German', label: 'German'},
         {name: 'English', label: 'English'},
     ];
 
     render () {
 
-        const {filter} = this.props;
-
+        const {filter, onFilterChange} = this.props;
+       
         const filterbuttons = this.filterbtn.map( ({name, label}) => {
+            const isActive = filter === name;
+            const classToAdd = isActive? 'btn-info': 'btn-outline-secondary'
             return (
               
                 <button type = "button" 
-                className = "btn btn-secondary"
+                className = {`btn ${classToAdd}`}
                 key = {name}
+                onClick = { () => onFilterChange (name)}
                 >
                 {label}
                 </button>
@@ -25,7 +28,6 @@ class WordsFilter extends Component {
         }
         )
 
-        //const isActive = filter = name;
         return filterbuttons;
     }
 }

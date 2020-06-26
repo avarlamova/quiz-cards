@@ -26,20 +26,16 @@ class NewWord extends Component  {
     }
 
     setGerman = () => {
-        this.setState(({de}) => {
-          return {
-            de: true,
-          };
-        });
-      };
+        this.setState ({
+          de: true,
+        })
+      }
 
-    setEnglish = () => {
-        this.setState(({de}) => {
-          return {
-            de: false,
-          };
-        });
-      };
+      setEnglish = () => {
+        this.setState ({
+          de: false,
+        })
+      }
 
     render() {
 
@@ -66,7 +62,7 @@ class NewWord extends Component  {
               name="1" id="de" 
               autoComplete="off" 
               defaultChecked 
-              onInput = {this.setGerman}
+              onChange = {this.setGerman}
               /> German
             </label>
              

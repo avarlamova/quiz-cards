@@ -7,19 +7,20 @@ import WordsFilter from './words-filter';
 
 class App extends Component {
     state = {
-            Data: [
-            this.createNewWord ('rankle', 'терзать'),
-            this.createNewWord('husbandry', 'сельское хозяйство'),
-            this.createNewWord('das Haus', 'дом'),          
+          Data: [
+            this.createNewWord('rankle', 'терзать', false),
+            this.createNewWord('husbandry', 'сельское хозяйство', false),
+            this.createNewWord('das Haus', 'дом', true),          
           ],
-          filter: 'all',
+          filter: 'All',
+          searchedWord: ''
         };
 
-    createNewWord(notation, translation) {
+    createNewWord(notation, translation, de) {
       return {
         notation,
-        id: Math.floor(Math.random() * 101),
-        de: false,
+        id: Math.floor(Math.random() * 1001),
+        de,
         translation,
       }
     };
@@ -45,18 +46,89 @@ class App extends Component {
           };
         })
       };
+      
+
+      changeLang = (arr, id, propName) => {
+        const idx = arr.findIndex((item) => item.id === id);
+        const oldItem = arr[idx];
+        const value = !oldItem[propName];
+    
+        const item = { ...arr[idx], [propName]: value } ;
+        return [
+          ...arr.slice(0, idx),
+          item,
+          ...arr.slice(idx + 1)
+        ];
+      };
+
+      /*
+      onToggleImportant = (id) => {
+this.setState((state) => {
+          const items = this.toggleProperty(state.items, id, 'de');
+          return { items };
+        });
+
+        this.setState((state) => {
+          const items = this.toggleProperty(state.items, id, 'important');
+          return { items };
+        });
+      };
+      */
+    
+
+      searchWords = (words, searchedWord) => {
+        if (searchedWord.length === 0) {
+          return words;
+        }
+    
+        return words.filter((word) => {
+          return word.notation.toLowerCase().indexOf(searchedWord.toLowerCase()) > -1;
+        });
+      };
+
+      searchChanged = (searchedWord) => {
+        this.setState ( {searchedWord} )
+      }
+
+      filterWords (words, filter) {
+
+        switch (filter) {
+          case 'All': 
+            return words;
+          case 'German':
+            return words.filter((word)=> word.de);
+          case 'English':
+            return words.filter((word)=> !word.de);
+          default:
+            return words;
+
+        }
+      }
+
+      onFilterChange  = (filter) => {
+          this.setState( {filter} )
+      }
      
 render () {
+
+    const { filter, searchedWord } = this.state;
+    const  words  = this.state.Data;
+    const displayedWords = this.filterWords(this.searchWords( words, searchedWord), filter)
     return (
       <div>
             <Header />
-            <WordsFilter filter = {filter}/>
+            <WordsFilter 
+            filter = { filter }
+            onFilterChange = {this.onFilterChange}/>
             <NewWord addWord = {this.addWord}/>
-            <List words = {this.state.Data}
+            <List 
+            words = { displayedWords }
+            onLangChange = {this.changeLang}
             onDelete = {this.deleteWord}
             onChange = {this.searchChanged}
             />
-            <SearchBar/> 
+            <SearchBar
+            searchChanged = {this.searchChanged}/> 
         </div>
         );
 }

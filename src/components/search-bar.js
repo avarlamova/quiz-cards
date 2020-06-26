@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
   
-  constructor(){
+  
+    constructor(){
     super();
     
     this.state = {
@@ -13,7 +14,7 @@ class SearchBar extends Component {
   searchChanged = (event) => {
     const searchedWord = event.target.value;
     this.setState( {searchedWord} );
-    this.props.searchedWords(searchedWord);
+    this.props.searchChanged(searchedWord);
   }
   render() {
    
