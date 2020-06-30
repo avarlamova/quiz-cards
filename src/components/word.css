@@ -2,8 +2,8 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 34px;
     background-color: lightskyblue;
-    margin: 3%;
-    width: 20%;
+    padding: 5%;
+    margin: 10px;
     height: 100px;
     text-align: center;
     transition: 0.5s;
@@ -28,4 +28,10 @@
 
 .english {
     color: blueviolet
+}
+
+.functional-btns {
+    padding: 5%;
+    margin: 10%;
+
 }

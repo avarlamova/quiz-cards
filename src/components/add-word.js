@@ -50,9 +50,18 @@ class NewWord extends Component  {
             placeholder = "type word" 
             value = {this.state.notation}/> 
 
-            <button className = "button-add"
+            <button className = "btn btn-success"
             onClick = { () => this.props.addWord}
             >Add word</button>
+            </form>
+
+            <form className = "item-add-form d-flex"> 
+            <input 
+            type="text" 
+            className = 'translation-add'
+            onChange = {this.onTranslationChange}
+            placeholder = "type translation" 
+            value = {this.state.translation}/> 
             </form>
 
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
@@ -70,15 +79,6 @@ class NewWord extends Component  {
               <input type="radio" name="1" id="en" autoComplete="off" /> English
             </label>
               </div>
-
-            <form className = "item-add-form d-flex"> 
-            <input 
-            type="text" 
-            className = 'translation-add'
-            onChange = {this.onTranslationChange}
-            placeholder = "type translation" 
-            value = {this.state.translation}/> 
-            </form>
             </div>
         )
           }

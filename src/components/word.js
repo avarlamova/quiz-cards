@@ -10,8 +10,9 @@ class Word extends Component {
             isFlipped: false,
             de: false,
         };
+      }
 
-        this.flip = () => {
+        flip = () => {
             this.setState(({isFlipped}) => {
               return {
                 isFlipped: !isFlipped
@@ -19,18 +20,10 @@ class Word extends Component {
             });
           };
 
-        this.onLangChange = () => {
-            this.setState(({de}) => {
-              return {
-                de: !de
-              };
-            });
-          };
-        };
 
 render () {
     
-    const { notation, onDelete, translation } = this.props;
+    const { notation, translation, onDelete, onLangChange } = this.props;
     const { isFlipped, de } = this.state;
     let classNames = "word-card";
     if (isFlipped) {
@@ -44,30 +37,32 @@ render () {
     }
 
     return ( 
-      <div className = "container">
-       <div className = "row"> 
-       <div className= {classNames}
-        onClick={ this.flip } 
-        >{ isFlipped ? translation : notation } 
+    <div> 
+      <div className="container"> 
+
+      <div className={classNames}
+      onClick={ this.flip } >
+      { isFlipped ? translation : notation } 
+    </div>
+    </div>
+    <div className = "container">
+        <div className = "row justify-content-around">
+          <div className = "col-6">
+            <button type = "button"
+            className = "btn btn-info btn-sm"
+            onClick = {onLangChange}> Change language </button>
+          </div>
+
+          <div className = "col-6"> 
+            <button 
+            className = "btn btn-sm btn-dark"
+            type = "button"
+            onClick = {onDelete} 
+            > Delete card </button> 
+          </div>
         </div>
         </div>
-        <div className = "container"> 
-        <div className = "row justify-content-сenter">
-        <div className = "col-2">
-          <button type = "button"
-          className = "btn btn-primary change-lng"
-          onClick = {this.onLangChange}> Change language </button>
-         </div>
-         <div className = "col-2"> 
-          <button 
-          type = "button"
-          className = "btn btn-primary delete-card" 
-          onClick = {onDelete} 
-          > Delete card </button> 
-        </div>
-        </div>
-        </div>
-        </div>
+      </div>  
     )
     }
 

@@ -47,35 +47,6 @@ class App extends Component {
         })
       };
       
-
-      changeLang = (arr, id, propName) => {
-        const idx = arr.findIndex((item) => item.id === id);
-        const oldItem = arr[idx];
-        const value = !oldItem[propName];
-    
-        const item = { ...arr[idx], [propName]: value } ;
-        return [
-          ...arr.slice(0, idx),
-          item,
-          ...arr.slice(idx + 1)
-        ];
-      };
-
-      /*
-      onToggleImportant = (id) => {
-this.setState((state) => {
-          const items = this.toggleProperty(state.items, id, 'de');
-          return { items };
-        });
-
-        this.setState((state) => {
-          const items = this.toggleProperty(state.items, id, 'important');
-          return { items };
-        });
-      };
-      */
-    
-
       searchWords = (words, searchedWord) => {
         if (searchedWord.length === 0) {
           return words;
@@ -88,7 +59,7 @@ this.setState((state) => {
 
       searchChanged = (searchedWord) => {
         this.setState ( {searchedWord} )
-      }
+      };
 
       filterWords (words, filter) {
 
@@ -103,11 +74,22 @@ this.setState((state) => {
             return words;
 
         }
-      }
+      };
 
       onFilterChange  = (filter) => {
           this.setState( {filter} )
-      }
+      };
+
+      onLangChange = (de) => {
+
+        this.setState(({de}) => {
+          return {
+            de: !de 
+            }
+        });
+
+      };
+      
      
 render () {
 
@@ -123,9 +105,8 @@ render () {
             <NewWord addWord = {this.addWord}/>
             <List 
             words = { displayedWords }
-            onLangChange = {this.changeLang}
+            onLangChange = {this.onLangChange}
             onDelete = {this.deleteWord}
-            onChange = {this.searchChanged}
             />
             <SearchBar
             searchChanged = {this.searchChanged}/> 

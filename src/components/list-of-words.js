@@ -7,7 +7,7 @@ const List = ({words, onDelete} ) => {
   const items = words.map((item) => {
     const {id} =  item;
     return (
-      <div key = {id} >
+      <div className = "col-xs-6 col-sm-4 col-md-3" key = {id} >
         <Word 
         notation = {item.notation} 
         translation = {item.translation}
@@ -17,9 +17,11 @@ const List = ({words, onDelete} ) => {
     );
   });
   return (
-    <div className="list-group-item">
+    <div className = "container"> 
+    <div className="row justify-content-around">
       { items }
     </div>
+    </div>      
   );
 };
 
