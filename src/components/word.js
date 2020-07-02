@@ -8,13 +8,12 @@ class Word extends Component {
         
         this.state = {
             isFlipped: false,
-            de: false,
         };
       }
 
-        flip = () => {
-            this.setState(({isFlipped}) => {
-              return {
+      flip = () => {
+          this.setState(({isFlipped}) => {
+            return {
                 isFlipped: !isFlipped
               };
             });
@@ -23,13 +22,13 @@ class Word extends Component {
 
 render () {
     
-    const { notation, translation, onDelete, onLangChange } = this.props;
-    const { isFlipped, de } = this.state;
+    const { notation, translation, onDelete, changeLang, de } = this.props;
+    const { isFlipped } = this.state;
     let classNames = "word-card";
     if (isFlipped) {
         classNames+=' flipped-card';
     }
-    if (de) {
+    if (de === true) {
         classNames+=' german';
     } 
     if (de === false) {
@@ -50,7 +49,7 @@ render () {
           <div className = "col-6">
             <button type = "button"
             className = "btn btn-info btn-sm"
-            onClick = {onLangChange}> Change language </button>
+            onClick = {changeLang}> Change language </button>
           </div>
 
           <div className = "col-6"> 

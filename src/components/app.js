@@ -20,8 +20,8 @@ class App extends Component {
       return {
         notation,
         id: Math.floor(Math.random() * 1001),
-        de,
         translation,
+        de,
       }
     };
 
@@ -35,8 +35,8 @@ class App extends Component {
         });
       };
 
-      addWord = (notation, translation) => {
-        const newWord = this.createNewWord(notation, translation);
+      addWord = (notation, translation, de) => {
+        const newWord = this.createNewWord(notation, translation, de);
         this.setState(({ Data }) => {
           const newArray = [...Data,
             newWord,
@@ -80,16 +80,6 @@ class App extends Component {
           this.setState( {filter} )
       };
 
-      onLangChange = (de) => {
-
-        this.setState(({de}) => {
-          return {
-            de: !de 
-            }
-        });
-
-      };
-      
      
 render () {
 
@@ -105,7 +95,7 @@ render () {
             <NewWord addWord = {this.addWord}/>
             <List 
             words = { displayedWords }
-            onLangChange = {this.onLangChange}
+            onLangChange = {this.changeLang}
             onDelete = {this.deleteWord}
             />
             <SearchBar
@@ -114,6 +104,7 @@ render () {
         );
 }
 }
+
 
 
 export default App 

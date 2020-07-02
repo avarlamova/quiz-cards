@@ -5,8 +5,9 @@ class NewWord extends Component  {
     state = {
         notation: '',
         translation: '',
-        de: false, 
+        de: true, 
     }
+
     onNotationChange = (event) => {
         this.setState ({
             notation: event.target.value,
@@ -21,21 +22,25 @@ class NewWord extends Component  {
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.props.addWord(this.state.notation, this.state.translation);
-        this.setState( {notation: '', translation: '' })
+        this.props.addWord(this.state.notation, this.state.translation, this.state.de);
+        this.setState( {notation: '', translation: '', de: false})
     }
 
     setGerman = () => {
-        this.setState ({
+        this.setState (({de}) => {
+          return {
           de: true,
-        })
-      }
+        };
+      })
+      };
 
-      setEnglish = () => {
-        this.setState ({
-          de: false,
+    setEnglish = () => {
+          this.setState (({de}) => {
+            return {
+            de: false,
+          };
         })
-      }
+        };
 
     render() {
 
@@ -65,22 +70,27 @@ class NewWord extends Component  {
             </form>
 
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
-            <label className="btn btn-primary active">
+            <label className = "btn btn-primary active" >
               <input 
               type="radio" 
-              name="1" id="de" 
-              autoComplete="off" 
-              defaultChecked 
+              name="1" 
+              defaultChecked
               onChange = {this.setGerman}
               /> German
             </label>
              
-            <label className="btn btn-primary">
-              <input type="radio" name="1" id="en" autoComplete="off" /> English
+            <label className = "btn btn-primary">
+              <input 
+              type="radio" 
+              name="1" 
+              onChange = {this.setEnglish}
+              /> English
             </label>
+
               </div>
             </div>
         )
           }
         }
+
 export default NewWord
