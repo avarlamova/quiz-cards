@@ -24,23 +24,19 @@ class NewWord extends Component  {
         event.preventDefault();
         this.props.addWord(this.state.notation, this.state.translation, this.state.de);
         this.setState( {notation: '', translation: '', de: false})
-    }
+    };
 
     setGerman = () => {
-        this.setState (({de}) => {
-          return {
+        this.setState ({
           de: true,
-        };
-      })
-      };
-
-    setEnglish = () => {
-          this.setState (({de}) => {
-            return {
-            de: false,
-          };
         })
-        };
+      };
+      
+      setEnglish = () => {
+        this.setState ({
+          de: false,
+        })
+      }
 
     render() {
 
@@ -92,5 +88,4 @@ class NewWord extends Component  {
         )
           }
         }
-
 export default NewWord

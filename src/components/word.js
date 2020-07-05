@@ -17,8 +17,7 @@ class Word extends Component {
                 isFlipped: !isFlipped
               };
             });
-          };
-
+          };   
 
 render () {
     
@@ -28,7 +27,7 @@ render () {
     if (isFlipped) {
         classNames+=' flipped-card';
     }
-    if (de === true) {
+    if (de) {
         classNames+=' german';
     } 
     if (de === false) {
@@ -64,10 +63,7 @@ render () {
       </div>  
     )
     }
-
-
 }
 
-
-
 export default Word
+

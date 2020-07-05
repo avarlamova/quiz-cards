@@ -7,13 +7,14 @@ import WordsFilter from './words-filter';
 
 class App extends Component {
     state = {
+      
           Data: [
             this.createNewWord('rankle', 'терзать', false),
             this.createNewWord('husbandry', 'сельское хозяйство', false),
-            this.createNewWord('das Haus', 'дом', true),          
-          ],
+            this.createNewWord('das Haus', 'дом', true),
+          ],   
           filter: 'All',
-          searchedWord: ''
+          searchedWord: '',
         };
 
     createNewWord(notation, translation, de) {
@@ -80,6 +81,14 @@ class App extends Component {
           this.setState( {filter} )
       };
 
+      changeLang  = () => {
+        console.log('lang changed');
+          this.setState(({de}) => {
+            return {
+                de: !de
+              };
+            });
+          }; 
      
 render () {
 
@@ -95,7 +104,7 @@ render () {
             <NewWord addWord = {this.addWord}/>
             <List 
             words = { displayedWords }
-            onLangChange = {this.changeLang}
+            changeLang = {this.changeLang}
             onDelete = {this.deleteWord}
             />
             <SearchBar

@@ -2,15 +2,16 @@ import React from 'react';
 import Word from './word';
 import './list-of-words.css';
 
-const List = ({words, onDelete} ) => {
+const List = ({words, onDelete, changeLang} ) => {
 
   const items = words.map((item) => {
     const {id} =  item;
     return (
-      <div className = "col-xs-4 col-sm-4 col-md-3" key = {id} >
+      <div className = "col-auto" key = {id} >
         <Word 
         notation = {item.notation} 
         translation = {item.translation}
+        changeLang = {changeLang}
         onDelete = {() => onDelete(id)}
         />
       </div>
