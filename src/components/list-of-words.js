@@ -11,6 +11,7 @@ const List = ({words, onDelete, changeLang} ) => {
         <Word 
         notation = {item.notation} 
         translation = {item.translation}
+        de = {item.de}
         changeLang = {changeLang}
         onDelete = {() => onDelete(id)}
         />

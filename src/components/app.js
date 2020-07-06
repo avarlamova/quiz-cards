@@ -81,19 +81,17 @@ class App extends Component {
           this.setState( {filter} )
       };
 
-      changeLang  = () => {
+      changeLang  = (de) => {
         console.log('lang changed');
-          this.setState(({de}) => {
             return {
                 de: !de
               };
-            });
-          }; 
+          };  
      
 render () {
 
     const { filter, searchedWord } = this.state;
-    const  words  = this.state.Data;
+    const words  = this.state.Data;
     const displayedWords = this.filterWords(this.searchWords( words, searchedWord), filter)
     return (
       <div>

@@ -25,7 +25,7 @@
 }
 
 .german {
-    font-style: italic;
+    color: #3A006F;
 }
 
 .english {
@@ -35,5 +35,4 @@
 .functional-btns {
     padding: 5%;
     margin: 10%;
-
 }
