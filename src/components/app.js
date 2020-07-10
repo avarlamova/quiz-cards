@@ -96,17 +96,17 @@ render () {
     return (
       <div>
             <Header />
+            <SearchBar
+            searchChanged = {this.searchChanged}/> 
             <WordsFilter 
             filter = { filter }
             onFilterChange = {this.onFilterChange}/>
-            <NewWord addWord = {this.addWord}/>
             <List 
             words = { displayedWords }
             changeLang = {this.changeLang}
             onDelete = {this.deleteWord}
             />
-            <SearchBar
-            searchChanged = {this.searchChanged}/> 
+            <NewWord addWord = {this.addWord}/>
         </div>
         );
 }

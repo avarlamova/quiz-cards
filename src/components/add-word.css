@@ -1,3 +1,7 @@
+.add-form {
+    margin-left: 40%;
+}
+
 .item-add-form {
     width: 400px;
     font-size: 26px;
@@ -16,4 +20,3 @@
     height: 50px;
     margin: 5px;
 }
-

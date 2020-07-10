@@ -41,7 +41,7 @@ class NewWord extends Component  {
     render() {
 
         return(
-            <div className="container"> 
+            <div className="container add-form"> 
             <form className="item-add-form d-flex" 
             onSubmit={this.onSubmit}> 
             <input 

@@ -43,7 +43,7 @@ render () {
       { isFlipped ? translation : notation } 
     </div>
     </div>
-    <div className = "container">
+    <div className = "container functional-btns">
         <div className = "row justify-content-around">
           <div className = "col-6">
             <button type = "button"
