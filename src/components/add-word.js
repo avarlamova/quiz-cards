@@ -38,6 +38,11 @@ class NewWord extends Component  {
         })
       }
 
+      toLocal = () => {
+        
+      }
+
+
     render() {
 
         return(
@@ -82,7 +87,6 @@ class NewWord extends Component  {
               onChange = {this.setEnglish}
               /> English
             </label>
-
               </div>
             </div>
         )
