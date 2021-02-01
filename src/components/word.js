@@ -3,13 +3,10 @@ import './word.css';
 
 class Word extends Component {
 
-    constructor(){
-        super();
-        
-        this.state = {
+    state = {
             isFlipped: false,
         };
-      }
+      
 
       flip = () => {
           this.setState(({isFlipped}) => {

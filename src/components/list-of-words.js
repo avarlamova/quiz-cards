@@ -2,7 +2,7 @@ import React from 'react';
 import Word from './word';
 import './list-of-words.css';
 
-const List = ({words, onDelete, changeLang, storage} ) => {
+const List = ({words, onDelete, changeLang} ) => {
 
   const items = words.map((item) => {
     const {id} =  item;
@@ -20,20 +20,33 @@ const List = ({words, onDelete, changeLang, storage} ) => {
   });
 
   const keys = Object.keys(localStorage);
-  const values = keys.map((i) => {
-    return localStorage.getItem(i)
+  const values = keys.map((key) => {
+    
+      let not = key;
+      let trans = localStorage.getItem(key);
+
+      return (
+        <>
+        <Word 
+        notation = {not} 
+        translation = {trans}
+        changeLang = {changeLang}
+        />
+        </>
+      )
+    
   }
-  );
- console.log(values);
+  )
   
-  
-//так же пройтись мапом по сторадж и отобразить внизу после {items}
   return (
     <div className = "container"> 
     <div className="row justify-content-around">
       { items }
+      { values }
     </div>
-    </div>      
+
+    </div> 
+         
   );
 };
 

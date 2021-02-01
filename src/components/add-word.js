@@ -38,10 +38,6 @@ class NewWord extends Component  {
         })
       }
 
-      toLocal = () => {
-        
-      }
-
 
     render() {
 
