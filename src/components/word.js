@@ -6,7 +6,6 @@ class Word extends Component {
     state = {
             isFlipped: false,
         };
-      
 
       flip = () => {
           this.setState(({isFlipped}) => {

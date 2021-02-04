@@ -18,37 +18,30 @@ const List = ({words, onDelete, changeLang} ) => {
       </div>
     );
   });
-
   const keys = Object.keys(localStorage);
-  const values = keys.map((key) => {
-    
-      let not = key;
-      let trans = localStorage.getItem(key);
-
+  let not;
+  let trans;
+  const storedItems = keys.map((key) => {
+      not = key;
+      trans = localStorage.getItem(key);
       return (
-        <>
+        <div>
         <Word 
-        notation = {not} 
-        translation = {trans}
-        changeLang = {changeLang}
-        />
-        </>
-      )
-    
-  }
-  )
-  
+        notation = {not}
+        translation = {trans} />
+        </div>)
+  });
+
   return (
     <div className = "container"> 
     <div className="row justify-content-around">
       { items }
-      { values }
+      {storedItems}
     </div>
 
     </div> 
          
   );
-};
-
+}
    
 export default List

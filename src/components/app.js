@@ -6,6 +6,7 @@ import SearchBar from './search-bar';
 import WordsFilter from './words-filter';
 import Reset from './reset';
 
+
 class App extends Component {
     state = {
       
@@ -16,7 +17,6 @@ class App extends Component {
           ],   
           filter: 'All',
           searchedWord: '',
-          storage: window.localStorage,
         };
 
     createNewWord(notation, translation, de) {
@@ -44,16 +44,16 @@ class App extends Component {
           const newArray = [...Data,
             newWord,
           ];
+          localStorage.setItem(notation, translation)
+
           return {
-            Data: newArray
+            Data: newArray,
           };
         })
 
-        //putting new words to the local storage
-        let savedword = notation;
-        let savedtranslation = translation;
-        localStorage.setItem(savedword, savedtranslation);
-      };
+
+        }
+    
       
     searchWords = (words, searchedWord) => {
         if (searchedWord.length === 0) {
@@ -97,7 +97,7 @@ class App extends Component {
 
 render () {
 
-    const { filter, searchedWord, storage } = this.state;
+    const { filter, searchedWord } = this.state;
     const words  = this.state.Data;
     const displayedWords = this.filterWords(this.searchWords( words, searchedWord), filter)
     return (
@@ -110,7 +110,6 @@ render () {
             onFilterChange = {this.onFilterChange}/>
             <List 
             words = { displayedWords }
-            storage = { storage }
             changeLang = {this.changeLang}
             onDelete = {this.deleteWord}
             />
