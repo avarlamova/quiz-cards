@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-export default class Reset extends Component {
-
-  reset() {
-      localStorage.clear()
+const Reset = ({clearList}) => {
+      return (
+        <button 
+        className = "btn btn-secondary"
+        onClick = {clearList}>
+            Clear the list
+        </button>
+      )    
   }
 
-  render() {
-    return (
-      <button 
-      className = "btn btn-secondary"
-      onClick = {this.reset}>
-          Clear the list
-      </button>
-    );
-  }
-}
+
+export default Reset; 

@@ -33,7 +33,6 @@ render () {
     return ( 
     <div> 
       <div className="container"> 
-
       <div className={classNames}
       onClick={ this.flip } >
       { isFlipped ? translation : notation } 

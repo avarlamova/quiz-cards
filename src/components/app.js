@@ -14,12 +14,15 @@ class App extends Component {
             this.createNewWord('rankle', 'терзать', false),
             this.createNewWord('husbandry', 'сельское хозяйство', false),
             this.createNewWord('das Haus', 'дом', true),
-          ],   
+          ],
           filter: 'All',
           searchedWord: '',
         };
 
-    createNewWord(notation, translation, de) {
+    createNewWord (notation, translation, de) {
+      /*console.log (localStorage.getItem(notation));
+      localStorage.setItem(notation, translation);*/
+      
       return {
         notation,
         id: Math.floor(Math.random() * 1001),
@@ -31,27 +34,28 @@ class App extends Component {
     deleteWord = (id) => {
         this.setState(({ Data }) => {
           const delId = Data.findIndex((el) => el.id === id);
-          const newArr = [...Data.slice(0, delId), ...Data.slice(delId + 1)];   
+          const newArr = [...Data.slice(0, delId), ...Data.slice(delId + 1)];
           return {
             Data: newArr
           };
         });
       };
 
+    deleteStoredWord = (key) => {
+      localStorage.removeItem(key);
+    }
+
     addWord = (notation, translation, de) => {
         const newWord = this.createNewWord(notation, translation, de);
         this.setState(({ Data }) => {
           const newArray = [...Data,
             newWord,
-          ];
-          localStorage.setItem(notation, translation)
-
+          ]; 
           return {
             Data: newArray,
           };
         })
-
-
+        localStorage.setItem(notation,translation)
         }
     
       
@@ -84,15 +88,24 @@ class App extends Component {
         }
       };
 
-    onFilterChange  = (filter) => {
+    onFilterChange = (filter) => {
           this.setState( {filter} )
       };
 
-    changeLang  = (de) => {
+    changeLang = (de) => {
             return {
                 de: !de
               };
     };
+
+    clearList = () => {
+      this.setState(({ Data }) => {
+        return {
+          Data: [],
+        };
+      })
+      localStorage.clear();
+    }
     
 
 render () {
@@ -116,7 +129,10 @@ render () {
             <NewWord 
             addWord = {this.addWord} 
             />
-            <Reset/>
+            <Reset
+            words = {displayedWords}
+            clearList = {this.clearList}
+            />
         </div>
         );
 }

@@ -18,27 +18,32 @@ const List = ({words, onDelete, changeLang} ) => {
       </div>
     );
   });
+
   const keys = Object.keys(localStorage);
+  let id = Math.floor(Math.random() * 1001);
   let not;
   let trans;
   const storedItems = keys.map((key) => {
       not = key;
       trans = localStorage.getItem(key);
+
       return (
-        <div>
+        <div key = {id}>
         <Word 
         notation = {not}
-        translation = {trans} />
+        translation = {trans}
+        changeLang = {changeLang}
+        onDelete = {() => localStorage.removeItem(key)} />
         </div>)
+      
   });
 
   return (
     <div className = "container"> 
-    <div className="row justify-content-around">
-      { items }
-      {storedItems}
-    </div>
-
+      <div className="row justify-content-around">
+        { items }
+        { storedItems }
+      </div>
     </div> 
          
   );
