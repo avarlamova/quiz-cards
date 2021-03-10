@@ -4,8 +4,8 @@ import './list-of-words.css';
 
 const List = ({words, onDelete, changeLang} ) => {
 
-  const items = words.map((item) => {
-    const {id} =  item;
+  /*const items = words.map((item) => {
+    const {id} = item;
     return (
       <div className = "col-auto" key = {id} >
         <Word 
@@ -17,23 +17,26 @@ const List = ({words, onDelete, changeLang} ) => {
         />
       </div>
     );
-  });
+  });*/
 
   const keys = Object.keys(localStorage);
-  let id = Math.floor(Math.random() * 1001);
   let not;
   let trans;
   const storedItems = keys.map((key) => {
+    let storedWord = JSON.parse(localStorage.getItem(key))
       not = key;
-      trans = localStorage.getItem(key);
-
+      trans = storedWord['translation'];
+      let de = storedWord['de'];
+      let id = storedWord['id'];
       return (
-        <div key = {id}>
+        <div className = "col-auto" key = {not}>
         <Word 
         notation = {not}
+        de = {de}
         translation = {trans}
         changeLang = {changeLang}
-        onDelete = {() => localStorage.removeItem(key)} />
+        onDelete = {() => onDelete(id)} 
+        />
         </div>)
       
   });
@@ -41,7 +44,7 @@ const List = ({words, onDelete, changeLang} ) => {
   return (
     <div className = "container"> 
       <div className="row justify-content-around">
-        { items }
+        
         { storedItems }
       </div>
     </div> 

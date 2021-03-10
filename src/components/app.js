@@ -9,26 +9,25 @@ import Reset from './reset';
 
 class App extends Component {
     state = {
-      
           Data: [
-            this.createNewWord('rankle', 'терзать', false),
-            this.createNewWord('husbandry', 'сельское хозяйство', false),
-            this.createNewWord('das Haus', 'дом', true),
+            this.createNewWord('rankle','терзать', false),
+            this.createNewWord('husbandry','сельское хозяйство',false),
+            this.createNewWord('das Haus','дом', true),
           ],
           filter: 'All',
           searchedWord: '',
         };
 
     createNewWord (notation, translation, de) {
-      /*console.log (localStorage.getItem(notation));
-      localStorage.setItem(notation, translation);*/
-      
-      return {
-        notation,
-        id: Math.floor(Math.random() * 1001),
-        translation,
-        de,
+      let storedObject = {
+        notation: notation,
+        translation: translation,
+        de: de,
+        id: Math.floor(Math.random() * 1001)
       }
+      localStorage.setItem(notation, JSON.stringify(storedObject));
+      
+      return storedObject;
     };
 
     deleteWord = (id) => {
@@ -37,13 +36,10 @@ class App extends Component {
           const newArr = [...Data.slice(0, delId), ...Data.slice(delId + 1)];
           return {
             Data: newArr
-          };
-        });
+          }; 
+        }
+        );
       };
-
-    deleteStoredWord = (key) => {
-      localStorage.removeItem(key);
-    }
 
     addWord = (notation, translation, de) => {
         const newWord = this.createNewWord(notation, translation, de);
@@ -55,10 +51,8 @@ class App extends Component {
             Data: newArray,
           };
         })
-        localStorage.setItem(notation,translation)
         }
-    
-      
+
     searchWords = (words, searchedWord) => {
         if (searchedWord.length === 0) {
           return words;
@@ -74,8 +68,7 @@ class App extends Component {
       };
 
     filterWords (words, filter) {
-
-        switch (filter) {
+      switch (filter) {
           case 'All': 
             return words;
           case 'German':
@@ -89,30 +82,29 @@ class App extends Component {
       };
 
     onFilterChange = (filter) => {
-          this.setState( {filter} )
+          this.setState({filter} )
       };
 
     changeLang = (de) => {
-            return {
-                de: !de
-              };
+      return {
+        de: !de
+      };
     };
 
     clearList = () => {
-      this.setState(({ Data }) => {
+      this.setState(() => {
         return {
           Data: [],
         };
       })
       localStorage.clear();
     }
-    
 
 render () {
 
     const { filter, searchedWord } = this.state;
-    const words  = this.state.Data;
-    const displayedWords = this.filterWords(this.searchWords( words, searchedWord), filter)
+    const words = this.state.Data;
+    const displayedWords = this.filterWords(this.searchWords(words, searchedWord), filter)
     return (
       <div>
             <Header />

@@ -32,12 +32,11 @@ class NewWord extends Component  {
         })
       };
       
-      setEnglish = () => {
+    setEnglish = () => {
         this.setState ({
           de: false,
         })
       }
-
 
     render() {
 
