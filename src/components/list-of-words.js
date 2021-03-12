@@ -20,21 +20,19 @@ const List = ({words, onDelete, changeLang} ) => {
   });*/
 
   const keys = Object.keys(localStorage);
-  let not;
-  let trans;
   const storedItems = keys.map((key) => {
     let storedWord = JSON.parse(localStorage.getItem(key))
-      not = key;
-      trans = storedWord['translation'];
+      let notation = key;
+      let translation = storedWord['translation'];
       let de = storedWord['de'];
       let id = storedWord['id'];
       return (
-        <div className = "col-auto" key = {not}>
+        <div className = "col-auto" key = {id}>
         <Word 
-        notation = {not}
+        notation = {notation}
         de = {de}
-        translation = {trans}
-        changeLang = {changeLang}
+        translation = {translation}
+        changeLang = {changeLang(de)}
         onDelete = {() => onDelete(id)} 
         />
         </div>)

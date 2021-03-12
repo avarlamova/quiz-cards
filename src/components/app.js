@@ -26,7 +26,6 @@ class App extends Component {
         id: Math.floor(Math.random() * 1001)
       }
       localStorage.setItem(notation, JSON.stringify(storedObject));
-      
       return storedObject;
     };
 
@@ -35,10 +34,9 @@ class App extends Component {
           const delId = Data.findIndex((el) => el.id === id);
           const newArr = [...Data.slice(0, delId), ...Data.slice(delId + 1)];
           return {
-            Data: newArr
+            Data: newArr,
           }; 
-        }
-        );
+        });
       };
 
     addWord = (notation, translation, de) => {
@@ -57,14 +55,14 @@ class App extends Component {
         if (searchedWord.length === 0) {
           return words;
         }
-    
+
         return words.filter((word) => {
           return word.notation.toLowerCase().indexOf(searchedWord.toLowerCase()) > -1;
         });
       };
 
     searchChanged = (searchedWord) => {
-        this.setState ( {searchedWord} )
+      this.setState({searchedWord})
       };
 
     filterWords (words, filter) {
@@ -72,23 +70,25 @@ class App extends Component {
           case 'All': 
             return words;
           case 'German':
-            return words.filter((word)=> word.de);
+            return words.filter((word)=> word.de === true);
           case 'English':
-            return words.filter((word)=> !word.de);
+            return words.filter((word)=> word.de === false);
           default:
             return words;
-
         }
       };
 
     onFilterChange = (filter) => {
-          this.setState({filter} )
+        this.setState({filter} )
       };
 
-    changeLang = (de) => {
-      return {
-        de: !de
-      };
+    changeLang = (notation, translation, de, id) => {
+      if (de===true) 
+      localStorage.setItem (notation, {'translation': translation, 'de': false, id:id});
+      
+      else 
+      localStorage.setItem (notation, {'translation': translation, 'de': true, id:id});
+
     };
 
     clearList = () => {
