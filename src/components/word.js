@@ -39,19 +39,26 @@ render () {
     </div>
     </div>
     <div className = "container functional-btns">
-        <div className = "row justify-content-around">
-          <div className = "col-6">
+        <div className = "row">
+          <div className = "col-4">
             <button type = "button"
             className = "btn btn-info btn-sm"
             onClick = {changeLang}> Change language </button>
           </div>
 
-          <div className = "col-6"> 
+          <div className = "col-4"> 
             <button 
             className = "btn btn-sm btn-dark"
             type = "button"
             onClick = {onDelete} 
             > Delete card </button> 
+          </div>
+
+          <div className = "col-4"> 
+            <button 
+            className = "btn btn-sm btn-dark"
+            type = "button"
+            > Edit </button> 
           </div>
         </div>
         </div>

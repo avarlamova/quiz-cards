@@ -83,12 +83,15 @@ class App extends Component {
       };
 
     changeLang = (notation, translation, de, id) => {
-      if (de===true) 
-      localStorage.setItem (notation, {'translation': translation, 'de': false, id:id});
-      
-      else 
-      localStorage.setItem (notation, {'translation': translation, 'de': true, id:id});
 
+      let newLang = {
+        notation: notation,
+        translation: translation,
+        de: !de,
+        id: id
+      }
+      localStorage.setItem(notation, JSON.stringify(newLang));
+      return newLang;
     };
 
     clearList = () => {

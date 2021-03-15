@@ -32,7 +32,7 @@ const List = ({words, onDelete, changeLang} ) => {
         notation = {notation}
         de = {de}
         translation = {translation}
-        changeLang = {changeLang(de)}
+        changeLang = {()=>changeLang(notation, translation, de, id)}
         onDelete = {() => onDelete(id)} 
         />
         </div>)
