@@ -5,6 +5,7 @@ import NewWord from './add-word';
 import SearchBar from './search-bar';
 import WordsFilter from './words-filter';
 import Reset from './reset';
+import EditWindow from './edit-window';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
           ],
           filter: 'All',
           searchedWord: '',
+          isEdited: false,
         };
 
     createNewWord (notation, translation, de) {
@@ -37,6 +39,14 @@ class App extends Component {
             Data: newArr,
           }; 
         });
+      };
+
+    editWord = () => {
+        this.setState(({isEdited}) => {
+        return {
+          isEdited: !isEdited,
+          };
+        })
       };
 
     addWord = (notation, translation, de) => {
@@ -105,7 +115,7 @@ class App extends Component {
 
 render () {
 
-    const { filter, searchedWord } = this.state;
+    const { filter, searchedWord, isEdited } = this.state;
     const words = this.state.Data;
     const displayedWords = this.filterWords(this.searchWords(words, searchedWord), filter)
     return (
@@ -120,7 +130,8 @@ render () {
             words = { displayedWords }
             changeLang = {this.changeLang}
             onDelete = {this.deleteWord}
-            />
+            /> 
+            <EditWindow /> 
             <NewWord 
             addWord = {this.addWord} 
             />

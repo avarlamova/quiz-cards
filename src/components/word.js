@@ -5,6 +5,7 @@ class Word extends Component {
 
     state = {
             isFlipped: false,
+            isEdited: false,
         };
 
       flip = () => {
@@ -13,12 +14,12 @@ class Word extends Component {
                 isFlipped: !isFlipped
               };
             });
-          };   
-
+          };
+    
 render () {
     
-    const { notation, translation, onDelete, changeLang, de } = this.props;
-    const { isFlipped } = this.state;
+    const { notation, translation, onDelete, editWord, changeLang, de } = this.props;
+    const { isFlipped, isEdited } = this.state;
     let classNames = "word-card";
     if (isFlipped) {
         classNames+=' flipped-card';
@@ -39,7 +40,7 @@ render () {
     </div>
     </div>
     <div className = "container functional-btns">
-        <div className = "row">
+        <div className = "row align-items-center">
           <div className = "col-4">
             <button type = "button"
             className = "btn btn-info btn-sm"
@@ -58,10 +59,13 @@ render () {
             <button 
             className = "btn btn-sm btn-dark"
             type = "button"
+            onClick = {editWord}
             > Edit </button> 
           </div>
         </div>
         </div>
+        {isEdited ? 
+        <prompt> Enter new {isFlipped ? 'translation' : 'notation'} </prompt> : ''}
       </div>  
     )
     }

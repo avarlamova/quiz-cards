@@ -20,7 +20,7 @@ const List = ({words, onDelete, changeLang} ) => {
   });*/
 
   const keys = Object.keys(localStorage);
-  const storedItems = keys.map((key) => {
+  const items = keys.map((key) => {
     let storedWord = JSON.parse(localStorage.getItem(key))
       let notation = key;
       let translation = storedWord['translation'];
@@ -42,8 +42,7 @@ const List = ({words, onDelete, changeLang} ) => {
   return (
     <div className = "container"> 
       <div className="row justify-content-around">
-        
-        { storedItems }
+        { items }
       </div>
     </div> 
          
