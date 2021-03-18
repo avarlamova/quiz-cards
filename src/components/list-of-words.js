@@ -2,7 +2,7 @@ import React from 'react';
 import Word from './word';
 import './list-of-words.css';
 
-const List = ({words, onDelete, changeLang} ) => {
+const List = ({words, onDelete, changeLang, editWord} ) => {
 
   /*const items = words.map((item) => {
     const {id} = item;
@@ -33,7 +33,8 @@ const List = ({words, onDelete, changeLang} ) => {
         de = {de}
         translation = {translation}
         changeLang = {()=>changeLang(notation, translation, de, id)}
-        onDelete = {() => onDelete(id)} 
+        onDelete = {() => onDelete(id)}
+        editWord = {editWord} 
         />
         </div>)
       

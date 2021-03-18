@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditWindow from './edit-window';
 import './word.css';
 
 class Word extends Component {
@@ -15,10 +16,18 @@ class Word extends Component {
               };
             });
           };
+
+      editWord = () => {
+        this.setState(({isEdited}) => {
+          return {
+              isEdited: !isEdited
+            };
+          });
+        };
     
 render () {
     
-    const { notation, translation, onDelete, editWord, changeLang, de } = this.props;
+    const { notation, translation, onDelete, changeLang, de } = this.props;
     const { isFlipped, isEdited } = this.state;
     let classNames = "word-card";
     if (isFlipped) {
@@ -59,13 +68,12 @@ render () {
             <button 
             className = "btn btn-sm btn-dark"
             type = "button"
-            onClick = {editWord}
+            onClick = {this.editWord}
             > Edit </button> 
           </div>
         </div>
         </div>
-        {isEdited ? 
-        <prompt> Enter new {isFlipped ? 'translation' : 'notation'} </prompt> : ''}
+        {isEdited ? <EditWindow /> : ''}
       </div>  
     )
     }
