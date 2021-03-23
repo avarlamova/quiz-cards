@@ -7,6 +7,7 @@ import WordsFilter from './words-filter';
 import Reset from './reset';
 
 class App extends Component {
+
     state = {
           Data: [
             this.createNewWord('rankle','терзать', false),
@@ -20,7 +21,6 @@ class App extends Component {
 
     createNewWord (notation, translation, de) {
       let storedObject = {
-        notation: notation,
         translation: translation,
         de: de,
         id: Math.floor(Math.random() * 1001)
@@ -114,7 +114,21 @@ class App extends Component {
 render () {
 
     const { filter, searchedWord } = this.state;
-    const words = this.state.Data;
+    const keys = Object.keys(localStorage);
+    const words = keys.map((key) => {
+    let word = JSON.parse(localStorage.getItem(key))
+      let notation = key;
+      let translation = word['translation'];
+      let de = word['de'];
+      let id = word['id'];
+      return {
+        notation: notation,
+        translation: translation,
+        de: de,
+        id: id,
+      }
+    });
+    //const words = this.state.Data;
     const displayedWords = this.filterWords(this.searchWords(words, searchedWord), filter)
     return (
       <div>
@@ -141,7 +155,6 @@ render () {
         );
 }
 }
-
 
 
 export default App 
