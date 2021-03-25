@@ -90,10 +90,11 @@ class App extends Component {
         this.setState({filter} )
       };
 
-    changeLang = (notation, translation, de, id) => {
+      //переделать функцию на edit? чтобы изменялся язык и другие параметры 
+      //через попап модальное окно
+    editWord = (notation, translation, de, id) => {
 
       let newLang = {
-        notation: notation,
         translation: translation,
         de: !de,
         id: id
@@ -108,27 +109,22 @@ class App extends Component {
           Data: [],
         };
       })
-      localStorage.clear();
+      localStorage.clear()
     }
 
 render () {
 
     const { filter, searchedWord } = this.state;
     const keys = Object.keys(localStorage);
-    const words = keys.map((key) => {
+    const words = Array.from(keys.map((key) => {
     let word = JSON.parse(localStorage.getItem(key))
-      let notation = key;
-      let translation = word['translation'];
-      let de = word['de'];
-      let id = word['id'];
       return {
-        notation: notation,
-        translation: translation,
-        de: de,
-        id: id,
+        notation: key,
+        translation: word.translation,
+        de: word.de,
+        id: word.id
       }
-    });
-    //const words = this.state.Data;
+    }));
     const displayedWords = this.filterWords(this.searchWords(words, searchedWord), filter)
     return (
       <div>
@@ -140,7 +136,6 @@ render () {
             onFilterChange = {this.onFilterChange}/>
             <List 
             words = { displayedWords }
-            changeLang = {this.changeLang}
             onDelete = {this.deleteWord}
             editWord = {this.editWord}
             /> 

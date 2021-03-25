@@ -4,35 +4,23 @@ import './list-of-words.css';
 
 const List = ({words, onDelete, changeLang, editWord} ) => {
 
-  /*const items = words.map((item) => {
-    const {id} = item;
-    return (
-      <div className = "col-auto" key = {id} >
-        <Word 
-        notation = {item.notation} 
-        translation = {item.translation}
-        de = {item.de}
-        changeLang = {changeLang}
-        onDelete = {() => onDelete(id)}
-        />
-      </div>
-    );
-  });*/
-
-  const keys = Object.keys(localStorage);
+ /* const keys = Object.keys(localStorage);
   const items = keys.map((key) => {
     let storedWord = JSON.parse(localStorage.getItem(key))
       let notation = key;
       let translation = storedWord['translation'];
       let de = storedWord['de'];
-      let id = storedWord['id'];
-      return (
+      let id = storedWord['id'];*/
+      
+      const items = words.map((item) => {
+        const {id} = item;
+        return (
         <div className = "col-auto" key = {id}>
         <Word 
-        notation = {notation}
-        de = {de}
-        translation = {translation}
-        changeLang = {()=>changeLang(notation, translation, de, id)}
+        notation = {item.notation}
+        de = {item.de}
+        translation = {item.translation}
+        changeLang = {()=>changeLang(item.notation, item.translation, item.de, item.id)}
         onDelete = {() => onDelete(id)}
         editWord = {editWord} 
         />

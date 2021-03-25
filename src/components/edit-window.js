@@ -5,6 +5,8 @@ const EditWindow = () => {
   const [isOpen, setOpen] = useState(false);
   const notationRef = useRef();
   const translationRef = useRef();
+  const germanRef = useRef();
+  const englishRef = useRef();
 
   const showModal = () => {
     setOpen(true);
@@ -19,7 +21,7 @@ const EditWindow = () => {
       <Button onClick={showModal}>Display Modal</Button>
       <Modal show={isOpen} onHide={hideModal}>
         <Modal.Header>
-          <Modal.Title>Edit word translation/notation </Modal.Title>
+          <Modal.Title>Edit </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form onSubmit>
@@ -34,6 +36,11 @@ const EditWindow = () => {
                     <Form.Control type="text" ref={translationRef}>
                     </Form.Control>
                 </Form.Group>
+
+                    <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="German" ref={germanRef} />
+                    <Form.Check type="checkbox" label="English" ref={englishRef}/>
+                    </Form.Group>
             </Form>
         </Modal.Body>
         <Modal.Footer>
