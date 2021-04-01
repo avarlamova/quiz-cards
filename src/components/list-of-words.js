@@ -21,7 +21,7 @@ const List = ({words, onDelete, changeLang, editWord} ) => {
         de = {item.de}
         translation = {item.translation}
         changeLang = {()=>changeLang(item.notation, item.translation, item.de, item.id)}
-        onDelete = {() => onDelete(id)}
+        onDelete = {() => onDelete(item.notation, words)}
         editWord = {editWord} 
         />
         </div>)

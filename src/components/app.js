@@ -29,15 +29,17 @@ class App extends Component {
       return storedObject;
     };
 
-    deleteWord = (id) => {
+    deleteWord = (notation, words) => {
+       
+        localStorage.removeItem(notation);
         this.setState(({ Data }) => {
-          const delId = Data.findIndex((el) => el.id === id);
-          const newArr = [...Data.slice(0, delId), ...Data.slice(delId + 1)];
+          const delIndex = words.findIndex((el)=>el.notation===notation)
+          const newarr = [...words.slice(0,delIndex),...words.slice(delIndex+1)]
           return {
-            Data: newArr,
+            Data: newarr,
           }; 
-        });
-      };
+      })
+    }
 
     editWord = () => {
         this.setState(({wordIsEdited}) => {
