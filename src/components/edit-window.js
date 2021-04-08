@@ -1,20 +1,11 @@
 import React, { useState, useRef } from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
 
-const EditWindow = () => {
-  const [isOpen, setOpen] = useState(false);
+const EditWindow = ({showModal, hideModal, isOpen}) => {
   const notationRef = useRef();
   const translationRef = useRef();
   const germanRef = useRef();
   const englishRef = useRef();
-
-  const showModal = () => {
-    setOpen(true);
-  };
-
-  const hideModal = () => {
-    setOpen(false);
-  };
 
   return (
     <>

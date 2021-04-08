@@ -5,6 +5,7 @@ import NewWord from './add-word';
 import SearchBar from './search-bar';
 import WordsFilter from './words-filter';
 import Reset from './reset';
+import EditWindow from './edit-window';
 
 class App extends Component {
 
@@ -116,7 +117,7 @@ class App extends Component {
 
 render () {
 
-    const { filter, searchedWord } = this.state;
+    const { filter, searchedWord, wordIsEdited } = this.state;
     const keys = Object.keys(localStorage);
     const words = Array.from(keys.map((key) => {
     let word = JSON.parse(localStorage.getItem(key))
@@ -140,6 +141,7 @@ render () {
             words = { displayedWords }
             onDelete = {this.deleteWord}
             editWord = {this.editWord}
+            wordIsEdited = {wordIsEdited}
             /> 
             <NewWord 
             addWord = {this.addWord} 
@@ -148,6 +150,7 @@ render () {
             words = {displayedWords}
             clearList = {this.clearList}
             />
+            {wordIsEdited ? <EditWindow /> : ''}
         </div>
         );
 }

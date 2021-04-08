@@ -1,34 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import EditWindow from './edit-window';
 import './word.css';
 
-class Word extends Component {
-
-    state = {
-            isFlipped: false,
-            isEdited: false,
-        };
-
-      flip = () => {
-          this.setState(({isFlipped}) => {
-            return {
-                isFlipped: !isFlipped
-              };
-            });
-          };
-
-      editWord = () => {
-        this.setState(({isEdited}) => {
-          return {
-              isEdited: !isEdited
-            };
-          });
-        };
+const Word =({notation, translation, onDelete, editWord, de, word}) => {
     
-render () {
+    const [isFlipped, setFlipped] = useState(false);
+    const [isOpen, setOpen] = useState(false);
     
-    const { notation, translation, onDelete, editWord, de } = this.props;
-    const { isFlipped, isEdited } = this.state;
+    const showModal = () => {
+      setOpen(true);
+    };
+    const hideModal = () => {
+      setOpen(false);
+    };
+
     let classNames = "word-card";
     if (isFlipped) {
         classNames+=' flipped-card';
@@ -44,7 +29,7 @@ render () {
 <div> 
   <div className="container"> 
     <div className={classNames}
-      onClick={ this.flip } >
+      onClick={setFlipped(!isFlipped) } >
       { isFlipped ? translation : notation } 
     </div>
     <div className = "container functional-btns">
@@ -52,7 +37,7 @@ render () {
           <div className = "col-6">
             <button type = "button"
             className = "btn btn-info btn-sm"
-            onClick = {this.editWord}> Edit word </button>
+            onClick = {setOpen(!isOpen)}> Edit word </button>
           </div>
 
           <div className = "col-4"> 
@@ -64,12 +49,15 @@ render () {
           </div>
         </div>
         </div>
-        {isEdited ? <EditWindow /> : ''}
+        {isOpen ? <EditWindow 
+        isOpen={isOpen}
+        showModal={showModal} 
+        hideModal={hideModal}/> : ''}
   </div>
 </div>  
 )
 }
-}
+
 
 export default Word
 
