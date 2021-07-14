@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
 
 const EditWindow = ({showModal, hideModal, isOpen}) => {
