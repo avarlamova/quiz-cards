@@ -31,6 +31,7 @@ class App extends Component {
 
   deleteWord = (notation, words) => {
     localStorage.removeItem(notation);
+    console.log(notation);
     this.setState(({ Data }) => {
       const delIndex = words.findIndex((el) => el.notation === notation);
       const newarr = [
@@ -43,7 +44,7 @@ class App extends Component {
     });
   };
 
-  editWord = () => {
+  OnEditWord = () => {
     this.setState(({ wordIsEdited }) => {
       return {
         wordIsEdited: !wordIsEdited,
@@ -96,10 +97,11 @@ class App extends Component {
 
   //переделать функцию на edit, чтобы изменялся язык и другие параметры
   //через попап модальное окно
-  editWord = () => {
-    console.log("lets edit this shit");
-    this.deleteWord("rankle", this.Data);
-    this.addWord("test", this.Data);
+  editWord = (notation, words) => {
+    console.log("lets edit");
+    localStorage.removeItem(notation);
+
+    this.addWord(notation, words);
     /*
       let newLang = {
         translation: translation,

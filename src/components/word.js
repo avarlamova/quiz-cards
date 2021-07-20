@@ -70,15 +70,14 @@ class Word extends Component {
               </div>
             </div>
           </div>
-          {wordIsEdited ? (
-            <EditWindow
-            //isOpen={isOpen}
-            //showModal={showModal}
-            //hideModal={hideModal}
-            />
-          ) : (
-            ""
-          )}
+          {/* {wordIsEdited ? ( */}
+          <EditWindow
+          //isOpen={isOpen}
+          //showModal={showModal}
+          //hideModal={hideModal}
+          />
+          ) : ( ""
+          {/* )} */}
         </div>
       </div>
     );
