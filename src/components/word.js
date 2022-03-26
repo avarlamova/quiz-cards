@@ -15,16 +15,8 @@ class Word extends Component {
     });
   };
 
-  /*editWord = () => {
-    this.setState(({ isEdited }) => {
-      return {
-        isEdited: !isEdited,
-      };
-    });
-  };*/
-
   render() {
-    const { notation, translation, onDelete, editWord, de, wordIsEdited } =
+    const { notation, translation, onDelete, onEditWord, de, wordIsEdited } =
       this.props;
     const { isFlipped } = this.state;
 
@@ -51,7 +43,7 @@ class Word extends Component {
                 <button
                   type="button"
                   className="btn btn-info btn-sm"
-                  onClick={editWord}
+                  onClick={onEditWord}
                 >
                   {" "}
                   Edit word{" "}
@@ -70,14 +62,11 @@ class Word extends Component {
               </div>
             </div>
           </div>
-          {/* {wordIsEdited ? ( */}
           <EditWindow
           //isOpen={isOpen}
           //showModal={showModal}
           //hideModal={hideModal}
           />
-          ) : ( ""
-          {/* )} */}
         </div>
       </div>
     );

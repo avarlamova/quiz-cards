@@ -31,7 +31,6 @@ class App extends Component {
 
   deleteWord = (notation, words) => {
     localStorage.removeItem(notation);
-    console.log(notation);
     this.setState(({ Data }) => {
       const delIndex = words.findIndex((el) => el.notation === notation);
       const newarr = [
@@ -44,7 +43,7 @@ class App extends Component {
     });
   };
 
-  OnEditWord = () => {
+  onEditWord = () => {
     this.setState(({ wordIsEdited }) => {
       return {
         wordIsEdited: !wordIsEdited,
@@ -148,7 +147,7 @@ class App extends Component {
         <List
           words={displayedWords}
           onDelete={this.deleteWord}
-          editWord={this.editWord}
+          onEditWord={this.onEditWord}
           wordIsEdited={wordIsEdited}
         />
         <NewWord addWord={this.addWord} />

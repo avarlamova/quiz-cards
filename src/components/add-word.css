@@ -1,22 +1,22 @@
 .add-form {
-    margin-left: 40%;
+  margin-left: 40%;
 }
 
 .item-add-form {
-    width: 400px;
-    font-size: 26px;
+  width: 400px;
+  font-size: 26px;
 }
-.item-add-form input{ 
-    margin-top: 5%;
+.item-add-form input {
+  margin-top: 5%;
 }
 
 .word-add {
-    width: 200px;
-    height: 50px;
-    margin: 5px;
+  width: 200px;
+  height: 50px;
+  margin: 5px;
 }
 .translation-add {
-    width: 200px;
-    height: 50px;
-    margin: 5px;
+  width: 200px;
+  height: 50px;
+  margin: 5px;
 }
