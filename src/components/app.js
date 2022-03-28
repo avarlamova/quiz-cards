@@ -97,7 +97,7 @@ class App extends Component {
   //переделать функцию на edit, чтобы изменялся язык и другие параметры
   //через попап модальное окно
   editWord = (notation, words) => {
-    console.log("lets edit");
+    // console.log("lets edit");
     localStorage.removeItem(notation);
 
     this.addWord(notation, words);

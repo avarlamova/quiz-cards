@@ -16,8 +16,7 @@ class Word extends Component {
   };
 
   render() {
-    const { notation, translation, onDelete, onEditWord, de, wordIsEdited } =
-      this.props;
+    const { notation, translation, onDelete, onEditWord, de } = this.props;
     const { isFlipped } = this.state;
 
     let classNames = "word-card";
@@ -40,14 +39,7 @@ class Word extends Component {
           <div className="container functional-btns">
             <div className="row align-items-center">
               <div className="col-6">
-                <button
-                  type="button"
-                  className="btn btn-info btn-sm"
-                  onClick={onEditWord}
-                >
-                  {" "}
-                  Edit word{" "}
-                </button>
+                <EditWindow notation={notation} translation={translation} />
               </div>
 
               <div className="col-4">
@@ -62,11 +54,6 @@ class Word extends Component {
               </div>
             </div>
           </div>
-          <EditWindow
-          //isOpen={isOpen}
-          //showModal={showModal}
-          //hideModal={hideModal}
-          />
         </div>
       </div>
     );
