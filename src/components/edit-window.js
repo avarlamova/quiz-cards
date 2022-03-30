@@ -3,11 +3,13 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 const EditWindow = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState("de");
 
   const { translation, notation, de } = props;
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
+  const changeLang = (param) => setLanguage(param);
 
   return (
     <>
@@ -30,7 +32,7 @@ const EditWindow = (props) => {
               <Form.Label> New translation </Form.Label>
               <Form.Control type="text" value={translation}></Form.Control>
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
+            <Form.Group controlId="formBasicCheckbox" onChange={changeLang}>
               <Form.Check
                 type="radio"
                 label="German"

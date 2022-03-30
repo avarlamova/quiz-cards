@@ -1,39 +1,40 @@
 .word-card {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 34px;
-    background-color: lightskyblue;
-    padding: 6%;
-    margin: 15px;
-    box-sizing: inherit;
-    max-width: 200%;
-    min-width: 100%;
-    text-align: center;
-    transition: 0.5s;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 34px;
+  background-color: lightskyblue;
+  padding: 6%;
+  margin: 15px;
+  box-sizing: inherit;
+  max-width: 200%;
+  min-width: 100%;
+  text-align: center;
+  transition: 0.5s;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .word-card:hover {
-    font-weight: bold;
-    background-color: skyblue;
+  font-weight: bold;
+  background-color: skyblue;
+  cursor: pointer;
 }
 
 .flipped-card {
-    background-color: lavender;
+  background-color: lavender;
 }
 
 .flipped-card:hover {
-    background-color: pink;
+  background-color: pink;
 }
 
 .german {
-    color: #3A006F;
+  color: #3a006f;
 }
 
 .english {
-    color: blueviolet
+  color: blueviolet;
 }
 
 .functional-btns {
-    text-align: center;
-    padding: 5%;
-    margin: 2%;
+  text-align: center;
+  padding: 5%;
+  margin: 2%;
 }
