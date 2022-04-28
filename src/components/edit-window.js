@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-const EditWindow = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState("de");
+const EditWindow = (word) => {
+  // const { translation, notation, de } = props;
 
-  const { translation, notation, de } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isGerman, setIsGerman] = useState(word.de);
+  const [notation, setNotation] = useState(word.notation);
+  const [translation, setTranslation] = useState(word.translation);
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
-  const changeLang = (param) => setLanguage(param);
 
   return (
     <>
@@ -26,19 +27,34 @@ const EditWindow = (props) => {
             {/* onSubmit */}
             <Form.Group>
               <Form.Label> New notation </Form.Label>
-              <Form.Control type="text" value={notation}></Form.Control>
+              <Form.Control
+                type="text"
+                value={notation}
+                onChange={(e) => setNotation(e.target.value)}
+              ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label> New translation </Form.Label>
-              <Form.Control type="text" value={translation}></Form.Control>
+              <Form.Control
+                type="text"
+                value={translation}
+                onChange={(e) => setTranslation(e.target.value)}
+              ></Form.Control>
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox" onChange={changeLang}>
+            <Form.Group
+              controlId="formBasicCheckbox"
+              onChange={() => setIsGerman(!isGerman)}
+            >
               <Form.Check
                 type="radio"
                 label="German"
-                // checked={de ? true : false}
+                checked={isGerman ? true : false}
               />
-              <Form.Check type="radio" label="English" />
+              <Form.Check
+                type="radio"
+                label="English"
+                checked={isGerman ? false : true}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

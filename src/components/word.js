@@ -39,7 +39,11 @@ class Word extends Component {
           <div className="container functional-btns">
             <div className="row align-items-center">
               <div className="col-6">
-                <EditWindow notation={notation} translation={translation} />
+                <EditWindow
+                  notation={notation}
+                  translation={translation}
+                  de={de}
+                />
               </div>
 
               <div className="col-4">
