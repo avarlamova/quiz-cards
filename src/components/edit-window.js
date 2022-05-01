@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-const EditWindow = (word) => {
-  // const { translation, notation, de } = props;
-
+const EditWindow = (props) => {
+  const { de, onEditWord, id } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [isGerman, setIsGerman] = useState(word.de);
-  const [notation, setNotation] = useState(word.notation);
-  const [translation, setTranslation] = useState(word.translation);
+  const [isGerman, setIsGerman] = useState(de);
+  const [notation, setNotation] = useState(props.notation);
+  const [translation, setTranslation] = useState(props.translation);
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedData = {
+      notation: notation,
+      translation: translation,
+      de: de,
+      id: id,
+    };
+    onEditWord(id, updatedData);
+  };
   return (
     <>
       <Button variant="primary" onClick={handleOpen}>
@@ -23,8 +32,8 @@ const EditWindow = (word) => {
           <Modal.Title>Word editing</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/*  */}
           <Form>
-            {/* onSubmit */}
             <Form.Group>
               <Form.Label> New notation </Form.Label>
               <Form.Control
@@ -33,7 +42,7 @@ const EditWindow = (word) => {
                 onChange={(e) => setNotation(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="ma-3">
               <Form.Label> New translation </Form.Label>
               <Form.Control
                 type="text"
@@ -41,19 +50,18 @@ const EditWindow = (word) => {
                 onChange={(e) => setTranslation(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group
-              controlId="formBasicCheckbox"
-              onChange={() => setIsGerman(!isGerman)}
-            >
+            <Form.Group>
               <Form.Check
                 type="radio"
                 label="German"
                 checked={isGerman ? true : false}
+                onChange={() => setIsGerman(!isGerman)}
               />
               <Form.Check
                 type="radio"
                 label="English"
                 checked={isGerman ? false : true}
+                onChange={() => setIsGerman(!isGerman)}
               />
             </Form.Group>
           </Form>
@@ -62,7 +70,7 @@ const EditWindow = (word) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

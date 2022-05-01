@@ -16,7 +16,7 @@ class Word extends Component {
   };
 
   render() {
-    const { notation, translation, onDelete, onEditWord, de } = this.props;
+    const { notation, translation, onDelete, onEditWord, de, id } = this.props;
     const { isFlipped } = this.state;
 
     let classNames = "word-card";
@@ -43,6 +43,8 @@ class Word extends Component {
                   notation={notation}
                   translation={translation}
                   de={de}
+                  id={id}
+                  onEditWord={onEditWord}
                 />
               </div>
 
@@ -56,6 +58,8 @@ class Word extends Component {
                   Delete card{" "}
                 </button>
               </div>
+
+              <button onClick={onEditWord}>test</button>
             </div>
           </div>
         </div>

@@ -24,12 +24,14 @@ class App extends Component {
       translation: translation,
       de: de,
       id: Math.floor(Math.random() * 1001),
+      // TODO  добавить uuid
     };
     localStorage.setItem(notation, JSON.stringify(storedObject));
     return storedObject;
   }
 
   deleteWord = (notation, words) => {
+    // TODO удаление по айди
     localStorage.removeItem(notation);
     this.setState(({ Data }) => {
       const delIndex = words.findIndex((el) => el.notation === notation);
@@ -43,10 +45,15 @@ class App extends Component {
     });
   };
 
-  onEditWord = () => {
-    this.setState(({ wordIsEdited }) => {
+  onEditWord = (id, updatedData) => {
+    const editIdx = this.state.Data.findIndex((el) => el.id === id);
+    this.setState(({ Data }) => {
+      const newarr = [...Data];
+      newarr.splice(editIdx, 1);
+      newarr.push(updatedData);
+      console.log(newarr);
       return {
-        wordIsEdited: !wordIsEdited,
+        Data: newarr,
       };
     });
   };

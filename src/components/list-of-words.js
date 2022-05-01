@@ -16,6 +16,7 @@ const List = ({ words, onDelete, changeLang, onEditWord }) => {
           }
           onDelete={() => onDelete(item.notation, words)}
           onEditWord={onEditWord}
+          id={id}
         />
       </div>
     );
