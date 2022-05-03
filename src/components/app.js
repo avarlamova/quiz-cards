@@ -6,27 +6,43 @@ import SearchBar from "./search-bar";
 import WordsFilter from "./words-filter";
 import Reset from "./reset";
 import EditWindow from "./edit-window";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   state = {
     Data: [
-      this.createNewWord("rankle", "терзать", false),
-      this.createNewWord("husbandry", "сельское хозяйство", false),
-      this.createNewWord("das Haus", "дом", true),
+      this.createNewWord(
+        "rankle",
+        "терзать",
+        false,
+        "cdfd2ade-c6c3-4bc5-b528-fbc8667c5c07"
+      ),
+      this.createNewWord(
+        "husbandry",
+        "сельское хозяйство",
+        false,
+        "f29dffff-a89e-4f8f-ad19-0e1f88add1f0"
+      ),
+      this.createNewWord(
+        "das Haus",
+        "дом",
+        true,
+        "f84c84c1-e056-4311-a928-526ec6754a37"
+      ),
     ],
     filter: "All",
     searchedWord: "",
     wordIsEdited: false,
   };
 
-  createNewWord(notation, translation, de) {
+  createNewWord(notation, translation, de, id = uuidv4()) {
+    // const id = uuidv4();
     let storedObject = {
+      notation: notation,
       translation: translation,
       de: de,
-      id: Math.floor(Math.random() * 1001),
-      // TODO  добавить uuid
     };
-    localStorage.setItem(notation, JSON.stringify(storedObject));
+    localStorage.setItem(id, JSON.stringify(storedObject));
     return storedObject;
   }
 
@@ -46,16 +62,23 @@ class App extends Component {
   };
 
   onEditWord = (id, updatedData) => {
+    // TODO апдейт локал стораджа
+    console.log(this.state.Data);
     const editIdx = this.state.Data.findIndex((el) => el.id === id);
     this.setState(({ Data }) => {
-      const newarr = [...Data];
+      let newarr = [...Data];
       newarr.splice(editIdx, 1);
-      newarr.push(updatedData);
-      console.log(newarr);
+      const newItem = this.createNewWord(
+        updatedData.notation,
+        updatedData.translation,
+        updatedData.de
+      );
+      newarr = [...newarr, newItem];
       return {
         Data: newarr,
       };
     });
+    console.log(this.state.Data);
   };
 
   addWord = (notation, translation, de) => {
@@ -101,24 +124,6 @@ class App extends Component {
     this.setState({ filter });
   };
 
-  //переделать функцию на edit, чтобы изменялся язык и другие параметры
-  //через попап модальное окно
-  editWord = (notation, words) => {
-    // console.log("lets edit");
-    localStorage.removeItem(notation);
-
-    this.addWord(notation, words);
-    /*
-      let newLang = {
-        translation: translation,
-        de: !de,
-        id: id
-      }
-      localStorage.setItem(notation, JSON.stringify(newLang));
-      return newLang;
-      */
-  };
-
   clearList = () => {
     this.setState(() => {
       return {
@@ -135,10 +140,10 @@ class App extends Component {
       keys.map((key) => {
         let word = JSON.parse(localStorage.getItem(key));
         return {
-          notation: key,
+          notation: word.notation,
           translation: word.translation,
           de: word.de,
-          id: word.id,
+          id: key,
         };
       })
     );
