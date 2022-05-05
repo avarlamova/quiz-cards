@@ -41,6 +41,7 @@ class App extends Component {
       notation: notation,
       translation: translation,
       de: de,
+      id: id,
     };
     localStorage.setItem(id, JSON.stringify(storedObject));
     return storedObject;
@@ -63,21 +64,27 @@ class App extends Component {
 
   onEditWord = (id, updatedData) => {
     // TODO апдейт локал стораджа
-    console.log(this.state.Data);
     const editIdx = this.state.Data.findIndex((el) => el.id === id);
-    this.setState(({ Data }) => {
-      let newarr = [...Data];
-      newarr.splice(editIdx, 1);
-      const newItem = this.createNewWord(
-        updatedData.notation,
-        updatedData.translation,
-        updatedData.de
-      );
-      newarr = [...newarr, newItem];
-      return {
-        Data: newarr,
-      };
-    });
+    if (editIdx > -1) {
+      this.setState(({ Data }) => {
+        let newarr = [...Data];
+
+        newarr.splice(editIdx, 1);
+        console.log(newarr);
+
+        const newItem = this.createNewWord(
+          updatedData.notation,
+          updatedData.translation,
+          updatedData.de,
+          id
+        );
+        newarr = [...newarr, newItem];
+        console.log(newarr);
+        return {
+          Data: newarr,
+        };
+      });
+    }
     console.log(this.state.Data);
   };
 

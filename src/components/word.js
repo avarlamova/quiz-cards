@@ -58,8 +58,6 @@ class Word extends Component {
                   Delete card{" "}
                 </button>
               </div>
-
-              <button onClick={onEditWord}>test</button>
             </div>
           </div>
         </div>

@@ -20,6 +20,7 @@ const EditWindow = (props) => {
       id: id,
     };
     onEditWord(id, updatedData);
+    handleClose();
   };
   return (
     <>
