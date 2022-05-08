@@ -14,7 +14,7 @@ const List = ({ words, onDelete, changeLang, onEditWord }) => {
           changeLang={() =>
             changeLang(item.notation, item.translation, item.de, item.id)
           }
-          onDelete={() => onDelete(item.notation, words)}
+          onDelete={() => onDelete(item.id, words)}
           onEditWord={onEditWord}
           id={id}
         />

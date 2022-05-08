@@ -36,7 +36,6 @@ class App extends Component {
   };
 
   createNewWord(notation, translation, de, id = uuidv4()) {
-    // const id = uuidv4();
     let storedObject = {
       notation: notation,
       translation: translation,
@@ -47,11 +46,11 @@ class App extends Component {
     return storedObject;
   }
 
-  deleteWord = (notation, words) => {
-    // TODO удаление по айди
-    localStorage.removeItem(notation);
+  deleteWord = (id, words) => {
+    console.log(id, words);
+    localStorage.removeItem(id);
     this.setState(({ Data }) => {
-      const delIndex = words.findIndex((el) => el.notation === notation);
+      const delIndex = words.findIndex((el) => el.id === id);
       const newarr = [
         ...words.slice(0, delIndex),
         ...words.slice(delIndex + 1),
@@ -63,15 +62,12 @@ class App extends Component {
   };
 
   onEditWord = (id, updatedData) => {
-    // TODO апдейт локал стораджа
     const editIdx = this.state.Data.findIndex((el) => el.id === id);
     if (editIdx > -1) {
       this.setState(({ Data }) => {
         let newarr = [...Data];
 
         newarr.splice(editIdx, 1);
-        console.log(newarr);
-
         const newItem = this.createNewWord(
           updatedData.notation,
           updatedData.translation,
@@ -85,7 +81,6 @@ class App extends Component {
         };
       });
     }
-    console.log(this.state.Data);
   };
 
   addWord = (notation, translation, de) => {
@@ -167,7 +162,7 @@ class App extends Component {
           words={displayedWords}
           onDelete={this.deleteWord}
           onEditWord={this.onEditWord}
-          wordIsEdited={wordIsEdited}
+          // wordIsEdited={wordIsEdited}
         />
         <NewWord addWord={this.addWord} />
         <Reset words={displayedWords} clearList={this.clearList} />
