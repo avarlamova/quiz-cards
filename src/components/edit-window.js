@@ -24,7 +24,7 @@ const EditWindow = (props) => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleOpen}>
+      <Button className="btn btn-sm" variant="primary" onClick={handleOpen}>
         Edit word
       </Button>
 

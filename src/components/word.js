@@ -32,32 +32,30 @@ class Word extends Component {
 
     return (
       <div>
-        <div className="container">
+        <div className="container my-4">
           <div className={classNames} onClick={this.flip}>
             {isFlipped ? translation : notation}
           </div>
-          <div className="container functional-btns">
-            <div className="row align-items-center">
-              <div className="col-6">
-                <EditWindow
-                  notation={notation}
-                  translation={translation}
-                  de={de}
-                  id={id}
-                  onEditWord={onEditWord}
-                />
-              </div>
+          <div className="row align-items-center mt-2">
+            <div className="col-6">
+              <EditWindow
+                notation={notation}
+                translation={translation}
+                de={de}
+                id={id}
+                onEditWord={onEditWord}
+              />
+            </div>
 
-              <div className="col-4">
-                <button
-                  className="btn btn-sm btn-dark"
-                  type="button"
-                  onClick={onDelete}
-                >
-                  {" "}
-                  Delete card{" "}
-                </button>
-              </div>
+            <div className="col-6">
+              <button
+                className="btn btn-sm btn-dark"
+                type="button"
+                onClick={onDelete}
+              >
+                {" "}
+                Delete card{" "}
+              </button>
             </div>
           </div>
         </div>

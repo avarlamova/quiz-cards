@@ -171,5 +171,5 @@ class App extends Component {
     );
   }
 }
-
+// TODO quiz mode - режим проверки слов
 export default App;
