@@ -44,52 +44,60 @@ class NewWord extends Component {
 
   render() {
     return (
-      <div className="container add-form">
-        <div className="col-6">
-          <form className="item-add-form " onSubmit={this.onSubmit}>
+      <div className="container add-form py-3 bg-success-subtle rounded">
+        <h3 className="row justify-content-center">Add new word </h3>
+        <form className="item-add-form" onSubmit={this.onSubmit}>
+          <div className="row justify-content-center">
             <input
               type="text"
-              className="word-add"
+              className="word-add col-6"
               onChange={this.onNotationChange}
               placeholder="type word"
               value={this.state.notation}
             />
-          </form>
-
-          <form className="item-add-form ">
+          </div>
+          <div className="row justify-content-center">
             <input
               type="text"
-              className="translation-add"
+              className="translation-add col-6"
               onChange={this.onTranslationChange}
               placeholder="type translation"
               value={this.state.translation}
             />
-          </form>
-
-          <div className="btn-group btn-group-toggle" data-toggle="buttons">
-            <label className="btn btn-primary active">
-              <input
-                type="radio"
-                name="1"
-                defaultChecked
-                onChange={this.setGerman}
-              />{" "}
-              German
-            </label>
-
-            <label className="btn btn-primary">
-              <input type="radio" name="1" onChange={this.setEnglish} /> English
-            </label>
           </div>
-        </div>
-        <div className="col-6">
-          <button
-            className="btn btn-success mt-5"
-            onClick={() => this.props.addWord}
+          <div
+            className="btn-group-toggle row justify-content-center gx-2"
+            data-toggle="buttons"
           >
-            Add word
-          </button>
-        </div>
+            <div className="btn btn-primary active col m-1 col-lg-3 col-sm-6">
+              <label>
+                <input
+                  type="radio"
+                  name="1"
+                  defaultChecked
+                  onChange={this.setGerman}
+                />{" "}
+                German
+              </label>
+            </div>
+
+            <div className="btn btn-primary col col-lg-3 col-sm-6 m-1">
+              <label>
+                <input type="radio" name="1" onChange={this.setEnglish} />{" "}
+                English
+              </label>
+            </div>
+          </div>
+          <div className="row justify-content-center my-1">
+            <button
+              type="submit"
+              className="btn btn-success col col-lg-6 col-sm-2"
+              onClick={() => this.props.addWord}
+            >
+              Add word
+            </button>
+          </div>
+        </form>
       </div>
     );
   }

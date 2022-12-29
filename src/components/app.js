@@ -47,7 +47,6 @@ class App extends Component {
   }
 
   deleteWord = (id, words) => {
-    console.log(id, words);
     localStorage.removeItem(id);
     this.setState(({ Data }) => {
       const delIndex = words.findIndex((el) => el.id === id);
@@ -85,6 +84,7 @@ class App extends Component {
 
   addWord = (notation, translation, de) => {
     const newWord = this.createNewWord(notation, translation, de);
+
     this.setState(({ Data }) => {
       const newArray = [...Data, newWord];
       return {
