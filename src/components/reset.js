@@ -1,14 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Reset = ({clearList}) => {
-      return (
-        <button 
-        className = "btn btn-secondary"
-        onClick = {clearList}>
-            Clear the list
-        </button>
-      )    
-  }
+const Reset = ({ clearList }) => {
+  return (
+    <button className="btn btn-secondary m-3" onClick={clearList}>
+      Clear the list
+    </button>
+  );
+};
 
-
-export default Reset; 
+export default Reset;

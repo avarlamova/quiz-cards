@@ -1,21 +1,18 @@
 .add-form {
+  margin: 0 auto;
+  width: 70%;
 }
-
-.item-add-form {
-  width: 400px;
-  font-size: 26px;
+@media (min-width: 768px) {
+  .add-form {
+    width: 40%;
+    /* margin: 0 auto; */
+  }
+  /* .item-add-form input[type="text"] {
+    font-size: 23px;
+  } */
 }
-.item-add-form input {
-  margin-top: 5%;
-}
-
-.word-add {
-  width: 200px;
+.item-add-form input[type="text"] {
+  margin-bottom: 5px;
+  min-width: 220px;
   height: 50px;
-  margin: 5px;
-}
-.translation-add {
-  width: 200px;
-  height: 50px;
-  margin: 5px;
 }
